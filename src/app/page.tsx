@@ -18,42 +18,84 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-orange-100 p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-lg font-semibold">Tugas</h2>
-            <MdAssignment className="text-2xl text-orange-600" />
+    <div className="space-y-10">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-800 via-orange-600 to-amber-600 bg-clip-text text-transparent mb-4">
+          Dashboard 
+        </h1>
+        <p className="text-gray-600 text-lg">
+          Buat dirimu lebih terorganisir dengan rencana studi dan jadwal
+          kegiatan
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="group relative bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-orange-200/50 hover:scale-105 hover:-translate-y-2">
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-400/5 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-orange-800">Total Tugas</h2>
+              <div className="p-3 bg-orange-200 rounded-xl">
+                <MdAssignment className="text-3xl text-orange-600" />
+              </div>
+            </div>
+            <p className="text-4xl font-bold text-orange-600 mb-2">
+              {tugas.length}
+            </p>
+            <p className="text-orange-700 text-sm">
+              Tugas yang harus dikerjakan
+            </p>
           </div>
-          <p className="text-3xl font-bold text-orange-600">{tugas.length}</p>
         </div>
-        <div className="bg-blue-100 p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-lg font-semibold">Mata Kuliah</h2>
-            <MdSchool className="text-2xl text-blue-600" />
+
+        <div className="group relative bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-blue-200/50 hover:scale-105 hover:-translate-y-2">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-sky-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-blue-800">Mata Kuliah</h2>
+              <div className="p-3 bg-blue-200 rounded-xl">
+                <MdSchool className="text-3xl text-blue-600" />
+              </div>
+            </div>
+            <p className="text-4xl font-bold text-blue-600 mb-2">
+              {mataKuliah.length}
+            </p>
+            <p className="text-blue-700 text-sm">Mata kuliah terdaftar</p>
           </div>
-          <p className="text-3xl font-bold text-blue-600">
-            {mataKuliah.length}
-          </p>
         </div>
-        <div className="bg-green-100 p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-lg font-semibold">Rencana</h2>
-            <MdEventNote className="text-2xl text-green-600" />
+
+        <div className="group relative bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-200/50 hover:scale-105 hover:-translate-y-2">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-emerald-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-green-800">Rencana</h2>
+              <div className="p-3 bg-green-200 rounded-xl">
+                <MdEventNote className="text-3xl text-green-600" />
+              </div>
+            </div>
+            <p className="text-4xl font-bold text-green-600 mb-2">
+              {rencana.length}
+            </p>
+            <p className="text-green-700 text-sm">Rencana kegiatan</p>
           </div>
-          <p className="text-3xl font-bold text-green-600">{rencana.length}</p>
         </div>
-        <div className="bg-purple-100 p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <h2 className="text-lg font-semibold">
-              Jadwal Mata Kuliah / Minggu
-            </h2>
-            <MdSchedule className="text-2xl text-purple-600" />
+
+        <div className="group relative bg-gradient-to-br from-purple-50 to-violet-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-200/50 hover:scale-105 hover:-translate-y-2">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-400/5 to-violet-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-purple-800">
+                Jadwal Kuliah
+              </h2>
+              <div className="p-3 bg-purple-200 rounded-xl">
+                <MdSchedule className="text-3xl text-purple-600" />
+              </div>
+            </div>
+            <p className="text-4xl font-bold text-purple-600 mb-2">
+              {jadwalMataKuliah.length}
+            </p>
+            <p className="text-purple-700 text-sm">Jadwal mingguan</p>
           </div>
-          <p className="text-3xl font-bold text-purple-600">
-            {jadwalMataKuliah.length}
-          </p>
         </div>
       </div>
     </div>

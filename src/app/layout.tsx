@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,13 +26,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 overflow-hidden`} >
-        <div className="flex h-[calc(100vh-2rem)] gap-4 rounded-2xl bg-white/50 p-4 overflow-hidden">
+      <head>
+        {/* Preload critical routes */}
+        <link rel="preload" href="/matakuliah" as="fetch" />
+        <link rel="preload" href="/jadwal" as="fetch" />
+        <link rel="preload" href="/daftar-tugas" as="fetch" />
+        <link rel="preload" href="/rencana" as="fetch" />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 p-4 overflow-hidden`}
+      >
+        <div className="flex h-[calc(100vh-2rem)] gap-6 rounded-3xl bg-white/70 backdrop-blur-sm p-6 shadow-2xl border border-white/20 overflow-hidden">
           <div className="w-[350px]">
             <Navbar />
           </div>
-          <main className="flex-1 bg-white rounded-2xl p-8 shadow-sm overflow-y-auto">
-            {children}
+          <main className="flex-1 bg-gradient-to-br from-white to-gray-50/50 rounded-3xl p-8 shadow-xl border border-white/30 overflow-y-auto backdrop-blur-sm">
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center min-h-full">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500 mx-auto mb-4"></div>
+                    <p className="text-gray-600 text-lg">Loading...</p>
+                  </div>
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
           </main>
         </div>
       </body>
